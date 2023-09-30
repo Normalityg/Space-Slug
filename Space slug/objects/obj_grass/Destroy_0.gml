@@ -1,0 +1,1 @@
+global.potentialScore -= scorePotential;

@@ -1,0 +1,1 @@
+#macro collision obj_collision

@@ -1,0 +1,1 @@
+if (hp < hpMax - hpRecovery)draw_sprite(spr_player_health, 13 - ceil((hp / hpMax) * 13), camera.view_width - 12, 12);

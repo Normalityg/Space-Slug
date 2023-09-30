@@ -1,0 +1,1 @@
+instance_create_depth(camera.camX + irandom_range(-camera.view_width - 32, camera.view_width + 32),camera.camY + irandom_range(-camera.view_height - 32, camera.view_height + 32),10,obj_solar_wind_particle);
