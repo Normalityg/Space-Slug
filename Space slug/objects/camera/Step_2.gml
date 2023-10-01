@@ -1,7 +1,7 @@
 camera_set_view_size(view_camera[0], view_width, view_height);
 
 if (room != rm_game && room != rm_tutorial)return; // No code below here outside of game room
-
+if (global.alive = false)return; // No code below after game over
 // Move camera
 //x = obj_engineer.x;
 //y = obj_engineer.y;

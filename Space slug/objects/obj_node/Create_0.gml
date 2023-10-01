@@ -1,5 +1,5 @@
 imageangle = 0;
-
+activated = false;
 particleTimer = 0;
 
 materials = irandom_range(3,9);
@@ -24,6 +24,6 @@ spew = function(_hitter){
 		materials --;
 		if (materials = 0)image_index = 1;
 		
-		audio_play_sound(snd_grass1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
+		audio_play_sound(snd_grass1,0,false,dropoff);
 	}
 }

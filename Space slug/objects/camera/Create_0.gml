@@ -12,6 +12,7 @@ alarm[0] = 1;
 
 surface_resize(application_surface,view_width,view_height);
 
+
 // Camera variables
 camX = 0;
 camY = 0;

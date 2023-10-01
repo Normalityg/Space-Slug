@@ -3,8 +3,6 @@ var keyRight = keyboard_check(ord("D"));
 var keyForward = keyboard_check(ord("W"));
 var keyBackward = keyboard_check(ord("S"));
 
-if (mouse_check_button_pressed(mb_left))shake_camera(4);
-
 #region Movement
 
 // Friction
@@ -16,10 +14,10 @@ spdKB = spdKB - (spdKB * 0.7) * global.delta;
 if (place_meeting(x,y,obj_platform))spdKB = spdKB - (spdKB * 0.98) * global.delta; // More friction when on platform
 
 // Turning
-var dirChange = (keyLeft - keyRight) * 4;
+var dirChange = (keyLeft - keyRight) * turnSpeed * global.delta;
 var spdDirection = sign(spd); // Variable for flipping turn direction when moving backwards
 if (spdDirection = 0)spdDirection = 1; // If it would stop turning make it turn as if facing forwards
-dir += dirChange * spdDirection;
+dir += dirChange * spdDirection
 
 // Increase the speed based on how fast they are going (faster = less accel)
 spd += (((keyForward - keyBackward) * 128) / (1 + abs(spd) / 64)) * global.delta;
@@ -73,7 +71,7 @@ image_angle = dir;
 
 // If the new rotation has collision undo
 if (place_meeting(x,y,collision)){
-	dir -= dirChange;
+	dir -= dirChange * spdDirection;
 	image_angle = dir;
 }
 

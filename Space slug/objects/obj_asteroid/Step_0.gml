@@ -56,7 +56,7 @@ spd = spd - (spd * 0.5) * global.delta;
 if (place_meeting(x,y,obj_platform))spd = spd - (spd * 0.8) * global.delta; // More friction when on platform
 
 // If there is a collision slow the speed
-if (place_meeting(x + xDist, y + yDist, [collision,obj_platform])){
+if (place_meeting(x + xDist, y + yDist, [obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform])){
 	// If a material was hit transfer momentum
 	if (place_meeting(x + xDist, y + yDist, obj_material)) instance_place(x + xDist, y + yDist, obj_material).momentum_transfer(self);
 	
@@ -77,21 +77,21 @@ if (place_meeting(x + xDist, y + yDist, [collision,obj_platform])){
 // X movement
 repeat(ceil(abs(xDist))){
 	if (abs(xDist) >= 1){
-		if (!place_meeting(x + sign(xDist),y,[collision,obj_platform]))x += sign(xDist);
+		if (!place_meeting(x + sign(xDist),y,[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform]))x += sign(xDist);
 		xDist -= 1 * sign(xDist);
 	}
 	else {
-		if (!place_meeting(x + xDist,y,[collision,obj_platform]))x += xDist;
+		if (!place_meeting(x + xDist,y,[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform]))x += xDist;
 	}
 }
 // Y movement
 repeat(ceil(abs(yDist))){
 	if (abs(yDist) >= 1){
-		if (!place_meeting(x,y + sign(yDist),[collision,obj_platform]))y += sign(yDist);
+		if (!place_meeting(x,y + sign(yDist),[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform]))y += sign(yDist);
 		yDist -= 1 * sign(yDist);
 	}
 	else {
-		if (!place_meeting(x,y + yDist,[collision,obj_platform]))y += yDist;
+		if (!place_meeting(x,y + yDist,[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform]))y += yDist;
 	}
 }
 
@@ -99,8 +99,11 @@ repeat(ceil(abs(yDist))){
 image_angle += rotateDir * spd * global.delta;
 
 // If the new rotation has collision undo
-if (place_meeting(x,y,collision)){
+if (place_meeting(x,y,[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall,obj_platform])){
 	image_angle -= rotateDir * spd * global.delta;
 }
 
 #endregion
+
+age += global.delta;
+if (age > 30)instance_destroy();

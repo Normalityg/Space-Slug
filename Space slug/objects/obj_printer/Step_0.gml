@@ -10,8 +10,8 @@ if (produceTimer < 0 && material >= 33){
 		material -= 33;
 		produceTimer = 0.8;
 		produceAnim = new animTracker(0.4);
-		shake_camera(6);
-		audio_play_sound(snd_printer,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
+		shake_camera(6 * dropoff);
+		audio_play_sound(snd_printer,0,false,dropoff);
 	}
 	ds_list_destroy(list);
 }

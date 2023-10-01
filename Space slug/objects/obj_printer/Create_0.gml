@@ -21,11 +21,11 @@ print = function(_material){
 
 momentum_transfer = function(_hitter){
 	// Exit if not enough spd
-	if (_hitter.spd < 5)return;
+	if (abs(_hitter.spd) < 5)return;
 	
 	// Ratio for how much to change the angle
 	var ratio = 0;
-	if (_hitter.spd > spd)ratio = abs(spd) / (abs(spd) + abs(_hitter.spd));
+	if (abs(_hitter.spd) > spd)ratio = abs(spd) / (abs(spd) + abs(_hitter.spd));
 	else ratio = abs(_hitter.spd) / (abs(spd) + abs(_hitter.spd));
 	
 	// Change the direction
@@ -34,5 +34,5 @@ momentum_transfer = function(_hitter){
 	// Take some of the speed
 	spd += _hitter.spd * 0.15;
 	
-	if (_hitter.spd * 0.15 > 10)audio_play_sound(snd_hit1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
+	if (_hitter.spd * 0.15 > 10)audio_play_sound(snd_hit1,0,false,dropoff);
 }

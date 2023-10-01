@@ -1,3 +1,7 @@
+if (irandom_range(0,14) = 0)instance_create_depth(x,y,0,obj_material_particle);
+
+
+
 // Movement vectors
 var xDist = dcos(dir) * spd * global.delta;
 var yDist = -dsin(dir) * spd * global.delta;
@@ -5,7 +9,7 @@ var yDist = -dsin(dir) * spd * global.delta;
 // Friction
 spd = spd - (spd * 0.5) * global.delta;
 if (place_meeting(x,y,obj_platform))spd = spd - (spd * 0.8) * global.delta; // More friction when on platform
-else if (point_distance(x,y,obj_player.x,obj_player.y) > 32){ // Solar winds when in space
+else if (global.alive = false || point_distance(x,y,obj_player.x,obj_player.y) > 32){ // Solar winds when in space
 	// Solar winds
 	xDist += (solarWeight) * dcos(global.solarDirection) * global.solarSpeed * global.delta;
 	yDist += (solarWeight) * -dsin(global.solarDirection) * global.solarSpeed * global.delta;

@@ -5,5 +5,7 @@ image_index = irandom_range(0,5);
 lifeTime = random_range(8,20);
 reproTime = random_range(0,lifeTime - 1);
 
+depth = 2;
+
 boost = 1;
-if (point_distance(x,y,instance_nearest(x,y,obj_node).x,instance_nearest(x,y,obj_node).y) < 48)boost = 2;
+if (instance_number(obj_node) != 0 && point_distance(x,y,instance_nearest(x,y,obj_node).x,instance_nearest(x,y,obj_node).y) < 48)boost = 2;

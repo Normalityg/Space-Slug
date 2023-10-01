@@ -1,9 +1,12 @@
+global.alive = true;
 
 dir = 0;
 spd = 0;
 
 dirKB = 0;
 spdKB = 0;
+
+turnSpeed = 270;
 
 respawning = false;
 

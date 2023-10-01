@@ -8,20 +8,22 @@ spd = 10;
 spdMax = 20;
 dir = 0;
 
+age = 0;
+
 solarWeight = random_range(0.7,1.3);
 
 alarm[0] = 1;
 momentum_transfer = function(_hitter){
 	// Split if the hitter can
-	if ((object_get_name(_hitter.object_index) != "obj_asteroid" && _hitter.spd > 20 * (size + 1)) || (object_get_name(_hitter.object_index) = "obj_asteroid" && (_hitter.size >= size || _hitter.spd / (1 + (size - _hitter.size)) > 20))){
-		show_debug_message(_hitter.spd);
+	if ((object_get_name(_hitter.object_index) != "obj_asteroid" && abs(_hitter.spd) > 20 * (size + 1)) || (object_get_name(_hitter.object_index) = "obj_asteroid" && (_hitter.size >= size || abs(_hitter.spd) / (1 + (size - _hitter.size)) > 20))){
+		
 		repeat(irandom_range(3 * (size + 1),6 * (size + 1))){
 			var part = instance_create_depth(x + irandom_range(-sprite_width, sprite_width) / 2,y + irandom_range(-sprite_height,sprite_height) / 2,0,obj_asteroid_particle);
 			part.direction = dir + random_range(-30, 30);
 			part.speed = spd * random_range(0.9,1.1) * global.delta;
 			//part.image_speed *= 1 - (size / 6);
 		}
-		shake_camera(3,dir);
+		shake_camera(3 * dropoff,dir);
 		split();
 	}
 	
@@ -44,7 +46,6 @@ split = function(){
 	if (size = 2)newSprite = spr_asteroid_medium;
 	if (size = 1)newSprite = spr_asteroid_tiny;
 	if (size = 0){
-		if (irandom_range(0,18) = 0)instance_create_depth(x,y,0,obj_material);
 		instance_destroy();
 		return;
 	}
