@@ -17,7 +17,9 @@ if (place_meeting(x,y,obj_platform))spdKB = spdKB - (spdKB * 0.98) * global.delt
 
 // Turning
 var dirChange = (keyLeft - keyRight) * 4;
-dir += dirChange;
+var spdDirection = sign(spd); // Variable for flipping turn direction when moving backwards
+if (spdDirection = 0)spdDirection = 1; // If it would stop turning make it turn as if facing forwards
+dir += dirChange * spdDirection;
 
 // Increase the speed based on how fast they are going (faster = less accel)
 spd += (((keyForward - keyBackward) * 128) / (1 + abs(spd) / 64)) * global.delta;

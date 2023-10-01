@@ -4,7 +4,8 @@ if (mouse_check_button_pressed(mb_left))instance_create_depth(mouse_x,mouse_y,0,
 
 global.solarDirection += random(1) - 0.5;
 
-if (room != "rm_game")return; // No code below here outside of the game
+if (room != rm_game)return; // No code below here outside of the game
+if (room = rm_tutorial)global.solarDirection = 180;
 
 #region Asteroid spawning
 if (irandom_range(0,240) = 0){
@@ -20,6 +21,7 @@ show_debug_message("threat" + string(threat));
 // Go upstream a certain amount of time and spawn it
 var arriveTime = 6 + logn(1.4,threat);
 var closestPlatform = -1;
+if (room = rm_tutorial)arriveTime = 9;
 
 var zoneX = target.x - dcos(global.solarDirection) * global.solarSpeed * arriveTime;
 var zoneY = target.y + dsin(global.solarDirection) * global.solarSpeed * arriveTime;
@@ -38,8 +40,8 @@ var variance = 48 + threat * 4;
 while(threat > 0){
 	// 1 in 100 become a material instead
 	if (irandom_range(0,99) = 0){
-		var newX = zoneX + irandom_range(-variance, variance);
-		var newY = zoneY + irandom_range(-variance, variance);
+		var newX = zoneX * distanceMult + irandom_range(-variance, variance);
+		var newY = zoneY * distanceMult + irandom_range(-variance, variance);
 		
 		mask_index = spr_material;
 		
@@ -47,8 +49,8 @@ while(threat > 0){
 		var i = 0;
 		
 		while(success = false && i < 10){
-			var newX = zoneX + irandom_range(-variance, variance);
-			var newY = zoneY + irandom_range(-variance, variance);
+			var newX = zoneX * distanceMult + irandom_range(-variance, variance);
+			var newY = zoneY * distanceMult + irandom_range(-variance, variance);
 			
 			if (!place_meeting(newX,newY,[collision,obj_platform])){
 				instance_create_depth(newX,newY,0,obj_material);
@@ -79,8 +81,8 @@ while(threat > 0){
 		var i = 0;
 		
 		while(success = false && i < 10){
-			var newX = zoneX + irandom_range(-variance, variance);
-			var newY = zoneY + irandom_range(-variance, variance);
+			var newX = zoneX * distanceMult + irandom_range(-variance, variance);
+			var newY = zoneY * distanceMult + irandom_range(-variance, variance);
 			
 			if (!place_meeting(newX,newY,[collision,obj_platform])){
 				

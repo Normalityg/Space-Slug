@@ -7,6 +7,7 @@ global.delta = 0;
 global.solarSpeed = 32;
 global.solarDirection = 210;
 
+global.playingGame = false;
 global.alive = true;
 
 global.highScore = 0;

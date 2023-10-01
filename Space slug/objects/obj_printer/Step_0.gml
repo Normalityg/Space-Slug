@@ -20,8 +20,6 @@ if (produceTimer > 0 && produceAnim != -1 && produceAnim.progress() = 1){
 	produceAnim = -1;
 	
 	instance_create_depth(x - 12 + irandom_range(-12,12),y - 12 + irandom_range(-12,12),0,obj_platform);
-	
-	audio_play_sound(snd_print1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
 }
 
 #endregion

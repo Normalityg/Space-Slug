@@ -7,3 +7,5 @@ image_yscale = random_range(0.9,1.1);
 
 image_index = irandom(2);
 hp = 100;
+
+if (room != rm_tutorial)audio_play_sound(snd_print1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);

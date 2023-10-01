@@ -8,6 +8,8 @@ solarWeight = random_range(0.05,0.3);
 
 material = 99;
 
+alarm[0] = 1;
+
 momentum_transfer = function(_hitter){
 	// Ratio for how much to change the angle
 	var ratio = 0;
@@ -21,3 +23,5 @@ momentum_transfer = function(_hitter){
 	spd += _hitter.spd * 0.3;
 	
 }
+
+if (room = rm_main_menu)instance_destroy(); // Dont exist in non game rooms

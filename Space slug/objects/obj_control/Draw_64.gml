@@ -1,4 +1,4 @@
-if (room != "rm_game")return;
+if (room != rm_game && room != rm_tutorial)return;
 // Tint the world
 draw_set_color(#363636);
 draw_set_alpha(0.3);
