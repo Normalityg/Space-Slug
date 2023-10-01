@@ -4,6 +4,8 @@ if (mouse_check_button_pressed(mb_left))instance_create_depth(mouse_x,mouse_y,0,
 
 global.solarDirection += random(1) - 0.5;
 
+if (room != "rm_game")return; // No code below here outside of the game
+
 #region Asteroid spawning
 if (irandom_range(0,240) = 0){
 // Pick a platform to target
@@ -25,8 +27,6 @@ var zoneY = target.y + dsin(global.solarDirection) * global.solarSpeed * arriveT
 var distanceMult = 1;
 // Make sure that the spawned asteroids are not within a range of a platform or else move them *1.1 until they are
 while(closestPlatform = -1 || 600 > point_distance(zoneX * distanceMult,zoneY * distanceMult,closestPlatform.x,closestPlatform.y)){
-	
-	
 	
 	distanceMult *= 1.1;
 	closestPlatform = instance_nearest(zoneX * distanceMult,zoneY * distanceMult,obj_platform);
@@ -63,9 +63,9 @@ while(threat > 0){
 	else{ // The rest create an asteroid
 		// Decide the size
 		var size = 0;
-		if (irandom_range(0,7) = 0){ // 1 in 8 become medium
+		if (irandom_range(0,15) = 0){ // 1 in 14 become medium
 			size = 1;
-			if (irandom_range(0,6) = 0)size = 2; // 1 in 56 become large
+			if (irandom_range(0,6) = 0)size = 2; // 1 in 98 become large
 		}
 		// Get the sprite
 		var newSprite;
@@ -85,7 +85,7 @@ while(threat > 0){
 			if (!place_meeting(newX,newY,[collision,obj_platform])){
 				
 				var ast = instance_create_depth(newX,newY,0,obj_asteroid);
-				ast.size = size - 1;
+				ast.size = size;
 				ast.sprite_index = newSprite;
 				success = true;
 			}

@@ -16,7 +16,7 @@ if (lifeTime <= 0){
 	else instance_destroy();
 }
 if (reproTime <= 0){
-	reproTime = random_range(0,5) / boost;
+	reproTime = random_range(0,3) / boost;
 	instance_create_depth(x + random_range(-12,12),y + random_range(-12,12),0,obj_grass);
 }
 

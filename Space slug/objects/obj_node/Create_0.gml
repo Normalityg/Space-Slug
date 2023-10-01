@@ -23,5 +23,7 @@ spew = function(_hitter){
 		
 		materials --;
 		if (materials = 0)image_index = 1;
+		
+		audio_play_sound(snd_grass1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
 	}
 }

@@ -1,3 +1,6 @@
+// Change image index to show how many materials
+image_index = floor(material / 33);
+
 // Producing animation
 if (produceAnim != -1){
 	var progress = -sqr(2 * produceAnim.progress() - 1) + 1;

@@ -5,13 +5,7 @@ spd = 0;
 dirKB = 0;
 spdKB = 0;
 
-hp = 30;
-hpMax = 30;
-hpRecovery = 0.4;
-hpLoss = 1;
-
 respawning = false;
-respawnTimer = 0;
 
 momentum_transfer = function(_hitter){
 	//var xDist = dcos(dir) * spd * global.delta;

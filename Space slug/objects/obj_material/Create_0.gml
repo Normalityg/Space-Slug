@@ -6,7 +6,7 @@ dir = 0;
 
 solarWeight = random_range(0.05,0.3);
 
-material = 100;
+material = 99;
 
 momentum_transfer = function(_hitter){
 	// Ratio for how much to change the angle

@@ -11,12 +11,11 @@ dir = 0;
 solarWeight = random_range(0.7,1.3);
 
 alarm[0] = 1;
-
 momentum_transfer = function(_hitter){
-	
 	// Split if the hitter can
-	if (_hitter.spd * (size + 2) > 20 && (object_get_name(_hitter.object_index) = "obj_player" || (object_get_name(_hitter.object_index) = "obj_material" || (object_get_name(_hitter.object_index) = "obj_asteroid" && (_hitter.size >= size || _hitter.spd / (1 + (size - _hitter.size)) > 20))))){
-		repeat(irandom_range(3 * (size + 2),6 * (size + 2))){
+	if ((object_get_name(_hitter.object_index) != "obj_asteroid" && _hitter.spd > 20 * (size + 1)) || (object_get_name(_hitter.object_index) = "obj_asteroid" && (_hitter.size >= size || _hitter.spd / (1 + (size - _hitter.size)) > 20))){
+		show_debug_message(_hitter.spd);
+		repeat(irandom_range(3 * (size + 1),6 * (size + 1))){
 			var part = instance_create_depth(x + irandom_range(-sprite_width, sprite_width) / 2,y + irandom_range(-sprite_height,sprite_height) / 2,0,obj_asteroid_particle);
 			part.direction = dir + random_range(-30, 30);
 			part.speed = spd * random_range(0.9,1.1) * global.delta;

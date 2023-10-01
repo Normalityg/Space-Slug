@@ -1,12 +1,3 @@
-if (respawning){// Skip step when respawning
-	respawnTimer -= 1 * global.delta;
-	if (respawnTimer < 0){ // Respawn
-		respawning = false;
-		hp = hpMax;
-	}
-	return;
-}
-
 var keyLeft = keyboard_check(ord("A"));
 var keyRight = keyboard_check(ord("D"));
 var keyForward = keyboard_check(ord("W"));
@@ -82,25 +73,6 @@ image_angle = dir;
 if (place_meeting(x,y,collision)){
 	dir -= dirChange;
 	image_angle = dir;
-}
-
-#endregion
-
-#region Health and respawning
-// Drain hp when in void
-if (!place_meeting(x,y,obj_platform))hp = clamp(hp - hpLoss * global.delta, 0, hpMax); 
-
-// Heal when in contact with grass
-if (place_meeting(x,y,obj_grass) && hp < hpMax - hpRecovery){
-	hp = clamp(hp + hpRecovery, 0, hpMax);
-	var grass = instance_place(x,y,obj_grass);
-	repeat(irandom_range(1,3))instance_create_depth(grass.x + irandom_range(-1,2), grass.y + irandom_range(-3,-1),0,obj_grass_particle);
-	instance_destroy(grass);
-}
-
-if (hp = 0){
-	respawning = true;
-	respawnTimer = 5;
 }
 
 #endregion

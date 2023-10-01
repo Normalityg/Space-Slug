@@ -15,8 +15,8 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": {
-    "name": "obj_homebase",
-    "path": "objects/obj_homebase/obj_homebase.yy",
+    "name": "obj_collision",
+    "path": "objects/obj_collision/obj_collision.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -34,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_homebase",
-    "path": "sprites/spr_homebase/spr_homebase.yy",
+    "name": "spr_printer",
+    "path": "sprites/spr_printer/spr_printer.yy",
   },
   "spriteMaskId": null,
   "visible": true,

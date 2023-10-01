@@ -34,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_homebase",
-    "path": "sprites/spr_homebase/spr_homebase.yy",
+    "name": "spr_printer",
+    "path": "sprites/spr_printer/spr_printer.yy",
   },
   "spriteMaskId": null,
   "visible": true,

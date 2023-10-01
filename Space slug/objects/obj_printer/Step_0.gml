@@ -11,15 +11,17 @@ if (produceTimer < 0 && material >= 33){
 		produceTimer = 0.8;
 		produceAnim = new animTracker(0.4);
 		shake_camera(6);
+		audio_play_sound(snd_printer,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
 	}
 	ds_list_destroy(list);
 }
 
 if (produceTimer > 0 && produceAnim != -1 && produceAnim.progress() = 1){
 	produceAnim = -1;
-	repeat(irandom_range(1,1)){
-		instance_create_depth(x - 12 + irandom_range(-12,12),y - 12 + irandom_range(-12,12),0,obj_platform);
-	}
+	
+	instance_create_depth(x - 12 + irandom_range(-12,12),y - 12 + irandom_range(-12,12),0,obj_platform);
+	
+	audio_play_sound(snd_print1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
 }
 
 #endregion
@@ -43,6 +45,10 @@ var yDist = -dsin(dir) * spd * global.delta;
 
 // If there is a collision slow the speed
 if (place_meeting(x + xDist, y + yDist, collision)){
+	// Increase spd to give more 'heaft'
+	var oldSpd = spd;
+	spd = spd * 7;
+	
 	// If a material was hit transfer momentum
 	if (place_meeting(x + xDist, y + yDist, obj_material)) instance_place(x + xDist, y + yDist, obj_material).momentum_transfer(self);
 	
@@ -54,6 +60,10 @@ if (place_meeting(x + xDist, y + yDist, collision)){
 	
 	// Print if a material was hit
 	if (place_meeting(x + xDist, y + yDist, obj_material))print(instance_place(x + xDist, y + yDist, obj_material));
+	
+	// Reset spd
+	spd = oldSpd;
+	
 	spd = (spd / 3) * 2; // Slow the object
 }
 // X movement

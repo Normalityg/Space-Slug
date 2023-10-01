@@ -1,0 +1,1 @@
+audio_play_sound(snd_hit1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);

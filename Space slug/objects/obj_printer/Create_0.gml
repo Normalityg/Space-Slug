@@ -5,14 +5,18 @@ dir = 0;
 spd = 0;
 
 material = 0;
-materialMax = 1000;
+materialMax = 165;
 
 produceTimer = 0;
 produceAnim = -1;
 
 print = function(_material){
-	material += _material.material;
-	instance_destroy(_material);
+	var maxMaterial = min(_material.material, materialMax - material) // The most material the printer can get from the interaction
+	
+	material += maxMaterial;
+	_material.material -= maxMaterial;
+	
+	if (_material.material <= 0)instance_destroy(_material);
 }
 
 momentum_transfer = function(_hitter){
@@ -29,4 +33,6 @@ momentum_transfer = function(_hitter){
 	
 	// Take some of the speed
 	spd += _hitter.spd * 0.15;
+	
+	if (_hitter.spd * 0.15 > 10)audio_play_sound(snd_hit1,0,false,1 - point_distance(x,y,camera.x,camera.y) / 400);
 }
