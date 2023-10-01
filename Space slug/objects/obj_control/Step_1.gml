@@ -34,6 +34,7 @@ if (keyPause && room != rm_main_menu){
 }
 
 global.delta = delta_time / 1000000 * !global.paused;
+global.currentTime += global.delta * 1000;
 
 if (mouse_check_button_pressed(mb_left))instance_create_depth(mouse_x,mouse_y,0,obj_material);
 
@@ -256,10 +257,14 @@ if (global.alive && instance_number(obj_grass) = 0 && !instance_exists(obj_game_
 		ini_open("save.ini");
 		ini_write_real("data","highscore",global.highScore);
 		ini_close();
+		
+		scoreGainAnim = new animTrackerFreed(8);
+		audio_play_sound(snd_drumroll_long,0,false);
 	}
-	
-	scoreGainAnim = new animTracker(5);
-	if (global.currentScore > 100)scoreGainAnim = new animTracker(2);
+	else{
+		scoreGainAnim = new animTrackerFreed(5);
+		audio_play_sound(snd_drumroll_short,0,false);
+	}
 	
 	instance_destroy(obj_player);
 	

@@ -1,6 +1,3 @@
-draw_text(12,12,fps_real);
-draw_text(12,36,fps);
-
 if (scoreGainAnim != -1){
 	
 	draw_set_font(global.fontNumbers);
@@ -13,13 +10,14 @@ if (scoreGainAnim != -1){
 	// Current score
 	if (progress < 1)draw_text_transformed(camera.view_width / 2 - (string_length(string(round(global.currentScore * progress))) * 6.5) * (1.7 * progress + 0.1),48,round(global.currentScore * progress),progress* 1.5 + 0.5,progress* 1.5 + 0.5,sin(current_time / 800 * (1 + progress * 9)) * 4);
 	else{
+		if (instance_number(obj_confetti_particle) = 0)audio_play_sound(snd_claps,0,false);
 		draw_text_transformed(camera.view_width / 2 - (string_length(string(round(global.currentScore))) * 6.5) * (1.7 * progress + 0.1),48,round(global.currentScore),progress * 1.5 + 0.5,progress* 1.5 + 0.5,0);
 		
 		//if (global.currentScore > oldHighScore){
-			if (confettiAnim = -1)confettiAnim = new animTracker(3);
+			if (confettiAnim = -1)confettiAnim = new animTrackerFreed(3);
 			
 			var confettiProg = confettiAnim.progress();
-			if (confettiProg = 1 && confettiOverAnim = -1)confettiOverAnim = new animTracker(6);
+			if (confettiProg = 1 && confettiOverAnim = -1)confettiOverAnim = new animTrackerFreed(6);
 			
 			var confetti = 0;
 			if (confettiOverAnim != -1)confetti = confettiOverAnim.progress();

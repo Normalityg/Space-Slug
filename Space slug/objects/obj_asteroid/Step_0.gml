@@ -106,4 +106,9 @@ if (place_meeting(x,y,[obj_player,obj_printer,obj_asteroid,obj_material,obj_wall
 #endregion
 
 age += global.delta;
-if (age > 30)instance_destroy();
+if (age > 30){
+	var part = instance_create_depth(x + irandom_range(-sprite_width, sprite_width) / 2,y + irandom_range(-sprite_height,sprite_height) / 2,0,obj_asteroid_particle);
+	part.direction = dir + random_range(-30, 30);
+	part.speed = spd * random_range(0.9,1.1) * global.delta;
+	instance_destroy();
+}

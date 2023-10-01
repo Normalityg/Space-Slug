@@ -1,7 +1,7 @@
 if (instance_number(obj_control) > 1)instance_destroy(); // Dont have multiple controls
 
 draw_set_font(fnt_default);
-
+global.settings = true;
 global.delta = 0;
 global.paused = false;
 
@@ -20,6 +20,8 @@ global.currentScore = 0;
 global.potentialScore = 0;
 
 global.beatTutorial = false;
+
+global.currentTime = 0;
 
 global.fontNumbers = font_add_sprite_ext(spr_font_numbers, "0123456789", true, 1);
 

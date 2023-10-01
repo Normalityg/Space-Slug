@@ -4,7 +4,7 @@ if (activated){
 	
 	if (hitTimer > 0)hitTimer -= 1;
 	
-	if (irandom_range(0,game_get_speed(gamespeed_fps) * 60) = 0 && materials < 4){
+	if (irandom_range(0,game_get_speed(gamespeed_fps) * 30) = 0 && materials < 4){
 		image_index = 0;
 		materials += 1;
 	}

@@ -10,6 +10,8 @@ materialMax = 165;
 produceTimer = 0;
 produceAnim = -1;
 
+soundAnim = new animTracker(0.05);
+
 print = function(_material){
 	var maxMaterial = min(_material.material, materialMax - material) // The most material the printer can get from the interaction
 	
@@ -34,5 +36,8 @@ momentum_transfer = function(_hitter){
 	// Take some of the speed
 	spd += _hitter.spd * 0.15;
 	
-	if (_hitter.spd * 0.15 > 10)audio_play_sound(snd_hit1,0,false,dropoff);
+	if (_hitter.spd * 0.15 > 5 && soundAnim.progress() = 1){
+		soundAnim = new animTracker(0.05);
+		audio_play_sound(snd_hit2,0,false,dropoff,0.1);
+	}
 }

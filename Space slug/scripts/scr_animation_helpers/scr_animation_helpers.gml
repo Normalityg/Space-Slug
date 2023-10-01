@@ -1,5 +1,14 @@
 function animTracker(_length) constructor{ // Timer for tracking the progress of an animation. Length is in seconds
   
+  trackerStart = global.currentTime; // Time the anim started
+  length = _length * 1000; // How long the anim lasts in us
+  
+  progress = function(){ // Function to check how far along an anim is
+    return(clamp((global.currentTime - trackerStart) / length, 0, 1));
+  }
+}
+function animTrackerFreed(_length) constructor{ // Timer for tracking the progress of an animation. Length is in seconds
+  
   trackerStart = current_time; // Time the anim started
   length = _length * 1000; // How long the anim lasts in ms
   

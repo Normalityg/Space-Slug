@@ -3,7 +3,7 @@ view_height = 1080 / 6;
 
 window_scale = 4;
 
-window_set_size(view_width * window_scale,view_height * window_scale);
+if (global.settings = true)window_set_size(view_width * window_scale,view_height * window_scale);
 
 // Set gui size so everything is the same size no matter the window size
 //display_set_gui_size(view_width,view_height);
