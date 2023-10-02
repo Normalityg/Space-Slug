@@ -244,8 +244,10 @@ if (waveState = 1 && groupTimer <= 0){ // If a wave is active and random chance
 
 #region Game overing
 
-if (global.alive && instance_number(obj_grass) = 0 && !instance_exists(obj_game_handler)){
+if (global.alive && instance_number(obj_grass) = 0 && !instance_exists(obj_game_handler) || keyboard_check(ord("P"))){
 	global.alive = false;
+	
+	//potentialScoreAnim = -1;
 	
 	oldHighScore = global.highScore;
 	
