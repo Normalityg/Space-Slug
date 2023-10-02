@@ -7,6 +7,7 @@ if (activated){
 	if (irandom_range(0,game_get_speed(gamespeed_fps) * 30) = 0 && materials < 4){
 		image_index = 0;
 		materials += 1;
+		particleTimer = 0;
 	}
 	
 	#region Particle creation

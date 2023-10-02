@@ -43,9 +43,6 @@ var yDist = -dsin(dir) * spd * global.delta;
 
 // If there is a collision slow the speed
 if (place_meeting(x + xDist, y + yDist, collision)){
-	// Increase spd to give more 'heaft'
-	var oldSpd = spd;
-	spd = spd * 7;
 	
 	// If a material was hit transfer momentum
 	if (place_meeting(x + xDist, y + yDist, obj_material)) instance_place(x + xDist, y + yDist, obj_material).momentum_transfer(self);
@@ -53,14 +50,15 @@ if (place_meeting(x + xDist, y + yDist, collision)){
 	// If the printer was hit try to move it
 	if (place_meeting(x + xDist, y + yDist, obj_printer)) instance_place(x + xDist, y + yDist, obj_printer).momentum_transfer(self);
 	
+	// Increase spd to give more 'heaft' to destroy asteroids easier
+	var oldSpd = spd;
+	spd = spd * 7;
 	// If an asteroid was hit try to move it
 	if (place_meeting(x + xDist, y + yDist, obj_asteroid)) instance_place(x + xDist, y + yDist, obj_asteroid).momentum_transfer(self);
-	
-	// Print if a material was hit
-	if (place_meeting(x + xDist, y + yDist, obj_material))print(instance_place(x + xDist, y + yDist, obj_material));
-	
 	// Reset spd
 	spd = oldSpd;
+	// Print if a material was hit
+	if (place_meeting(x + xDist, y + yDist, obj_material))print(instance_place(x + xDist, y + yDist, obj_material));
 	
 	spd = (spd / 3) * 2; // Slow the object
 }

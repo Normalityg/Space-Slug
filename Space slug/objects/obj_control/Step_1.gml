@@ -36,8 +36,6 @@ if (keyPause && room != rm_main_menu){
 global.delta = delta_time / 1000000 * !global.paused;
 global.currentTime += global.delta * 1000;
 
-if (mouse_check_button_pressed(mb_left))instance_create_depth(mouse_x,mouse_y,0,obj_material);
-
 global.solarDirection += random(1) - 0.5;
 
 #region Chaning wind direction

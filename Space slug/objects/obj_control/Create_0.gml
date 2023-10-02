@@ -1,7 +1,7 @@
 if (instance_number(obj_control) > 1)instance_destroy(); // Dont have multiple controls
 
 draw_set_font(fnt_default);
-global.settings = true;
+
 global.delta = 0;
 global.paused = false;
 

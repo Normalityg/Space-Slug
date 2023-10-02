@@ -10,7 +10,7 @@ material = 99;
 
 alarm[0] = 1;
 
-soundAnim = new animTracker(0.05);
+soundAnim = new animTracker(0.35);
 
 momentum_transfer = function(_hitter){
 	// Ratio for how much to change the angle
@@ -24,8 +24,8 @@ momentum_transfer = function(_hitter){
 	// Take some of the speed
 	spd += _hitter.spd * 0.3;
 	
-	if (_hitter.spd * 0.15 > 2 && soundAnim.progress() = 1){
-		soundAnime= new animTracker(0.1);
+	if (_hitter.spd * 0.15 > 3 && soundAnim.progress() = 1){
+		soundAnim = new animTracker(0.35);
 		audio_play_sound(snd_hit2,0,false,dropoff,0.1);
 	}
 }
