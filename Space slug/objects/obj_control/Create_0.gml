@@ -37,7 +37,7 @@ if (file_exists("save.ini")){
 }
 
 // Internal variables
-potentialScoreAnim = new animTracker(5 + 50);
+potentialScoreAnim = -1;
 scoreAddWait = new animTracker(5 + 50);
 
 windChange = 30
